@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Yhenriquezphoto</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      height: 100vh;
+    }
+    header {
+      background: #eeee76;
+      padding: 20px;
+      text-align: center;
+    }
+    header h1 {
+      margin: 0;
+      color: #605f04;
+    }
+
+    /* Ocultamos el chat original manual */
+    #chat-container { display: none; }
+  </style>
+
+  <!-- Estilos del widget -->
+  <link href="https://cdn.jsdelivr.net/npm/@n8n/chat/dist/style.css" rel="stylesheet" />
+</head>
+
+<body>
+  <header>
+    <h1>Yhenriquezphoto</h1>
+  </header>
+
+  <!-- Contenedor del chat -->
+  <div id="n8n-chat" style="flex: 1;"></div>
+
+  <!-- Script de integración personalizado -->
+  <script type="module">
+    import { createChat } from 'https://cdn.jsdelivr.net/npm/@n8n/chat/dist/chat.bundle.es.js';
+
+    createChat({
+      webhookUrl: 'https://manceboplacido.app.n8n.cloud/webhook/33df3c8f-2f45-4d48-9b5c-b9e14cd4efef/chat',
+      target: '#n8n-chat',
+      mode: 'window',
+      showWelcomeScreen: false,
+      chatInputKey: 'chatInput',
+      chatSessionKey: 'sessionId',
+      loadPreviousSession: true,
+      defaultLanguage: 'es',
+      initialMessages: [
+        '¡Hola! 👋',
+        'Soy **YADBot**, tu asistente virtual de fotografía. ¿En qué puedo ayudarte hoy?'
+      ],
+      i18n: {
+        es: {
+          title: '¡Hola! 👋',
+          subtitle: 'Chateá con nosotros. Estamos aquí para ayudarte.',
+          footer: '',
+          getStarted: 'Nueva conversación',
+          inputPlaceholder: 'Escribe tu mensaje aquí...',
+        }
+      }
+    });
+  </script>
+</body>
+</html>
+
